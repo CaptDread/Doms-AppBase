@@ -1,3 +1,7 @@
+/* CSS File, tread carefully */
+/* Core */
+
+
 .page {
   background: #fff;
   display: flex;
@@ -11,7 +15,19 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
+  height: 100%;
 }
+
+/* Utility */
+
+.input{
+  border: none;
+  border-bottom: solid .13em darkslategrey;
+  border-left: solid .13em darkslategrey;
+  padding: .13em;
+}
+
+
 
 /* Content */
 .brandShow{
@@ -46,84 +62,101 @@
 	}
 }
 
+/* Grouplists */
+.listGroup_section{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.listHeader{
+  border-bottom: solid .69em purple;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  text-transform: capitalize;
+  letter-spacing: .13em;
+  font-size: 2em;
+}
+
+.todolist_ul{
+  width: 100vw;
+  display: flex;
+  padding: 0 1em;
+  flex-direction: column;
+  height: fit-content;
+  text-transform: capitalize;
+  align-items: center;
+}
+
+.addtask_btn{
+  color: white;
+  border-radius: 5px;
+  background-color: lime;
+  width: 100%;
+  text-transform: capitalize;
+  font-size: 2.5em;
+  font-weight: 600;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+/* ListCards */
+.todolist_item {
+  width: 100%;
+  height: fit-content;
+  padding: 1em;
+}
 
 
+/* Modals */
+.modalBkgd{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000af;
+}
+
+.modalFrame{
+  background-color: #fff;
+  width: fit-content;
+  height: fit-content;
+  padding: 1em;
+  border: solid .42em gold;
+  border-radius: 5px;
+}
+.modalbtn_x{
+  display: flex;
+  font-size: 1em;
+  font-weight: 400;
+  position: relative;
+  margin-left: auto;
+}
+
+.modalForm_add{
+  display: flex;
+  flex-direction: column;
+  gap: .69em;
+  font-size: 1.3em;
+  width: 13em;
+  height: fit-content;
+}
+
+.modalForm_add .extras{
+  display: flex;
+  gap: 1.3em;
+  justify-content: center;
+}
+.modalForm_add .extras .addtask_btn{
+  width: fit-content;
+  font-size: 1em;
+}
 
 
 
 
 /* Footer */
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
 
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-}
