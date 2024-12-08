@@ -106,6 +106,36 @@
   width: 100%;
   height: fit-content;
   padding: 1em;
+  list-style: none;
+  font-size: 1.2em;
+  display: flex;
+  gap: .69em;
+}
+.item_info{
+  display: flex;
+  flex-direction: column;
+}
+.item_head h5{
+  font-size: 1.5em;
+}
+.item_head p{
+  padding: 0px 2% 0px 0px;
+}
+.item_extras{
+  font-size: 1em;
+}
+.item_btns{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: auto;
+  justify-content: center;
+  gap: .42em;
+}
+.item_btns button{
+  background: none;
+  border: none;
+  font-weight: 500;
 }
 
 
