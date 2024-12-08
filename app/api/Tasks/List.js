@@ -1,4 +1,5 @@
 "useClient"
+import DisplayList from "@/app/components/base/SubTaskList";
 import styles from "../../page.module.css";
 import { useState } from "react";
 
@@ -7,22 +8,25 @@ import { useState } from "react";
 
 export default function ListTask(data){
     const [isOpen, setIsOpen] = useState(false)
-    // const [hasSubTask, setHasSubTask] = useState(false)
 
     const task = JSON.parse(data)
     let subtask = task.sub_task
-
-    // if(subtask.length > 0){
-    //     setHasSubTask(true)
-    // }
+    let hasSubState = false
+    
 
     const toggleOpen = (e) => {
         e.preventDefault();
         setIsOpen(!isOpen)
     }
 
+    if(subtask.length > 0){
+        hasSubState = true
+    }
+
+
+
     return (
-        <li className={styles.todolist_item}>
+        <>
             <div className={styles.item_info}>
                  <div className={styles.item_head}>
                     <h5>{task.task_name}</h5>
@@ -31,9 +35,8 @@ export default function ListTask(data){
                  <div className={styles.item_extras} style={{display: isOpen? "flex":"none"}}>
                     <article>
                         {task.task_desc}
-                        {/* <ul className={styles.item_subtasks} style={{display: hasSubTask? "flex":"none"}}>
-                        </ul> */}
                     </article>
+                    {DisplayList(hasSubState, subtask)}
                  </div>
             </div>
             <div className={styles.item_btns}>
@@ -47,6 +50,6 @@ export default function ListTask(data){
                     \/
                 </button>
             </div>
-        </li>
+        </>
     )
 }

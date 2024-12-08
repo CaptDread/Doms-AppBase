@@ -6,11 +6,10 @@ import AddTaskModal from "../modals/AddTaskModal";
 import { React, useState } from "react";
 
 
-let groups = []
-if (typeof window !== 'undefined'){
-    groups = localStorage.getItem('groups');
-    console.log('test')
-}
+const groups = localStorage.getItem('groups'); 
+// if (typeof window !== 'undefined'){
+//     groups = localStorage.getItem('groups');
+// }
 
 
 function TutorialList() {
@@ -65,7 +64,6 @@ function TutorialList() {
         e.stopPropagation();
 
         localStorage.setItem("groups", userGroups);
-        console.log("group saved")
     }
 
     return(
@@ -77,9 +75,13 @@ function TutorialList() {
 
             </div>
             <ul className={styles.todolist_ul}>
-                {Object.values(listOBJS).map(ListTask)}
-                <button className={styles.addtask_btn} onClick={toggleTaskModal}>+ new task</button>
+                {Object.entries(listOBJS).map(([key, value]) => (
+                    <li key={key} className={styles.todolist_item}>
+                        {ListTask(value)}
+                    </li>
+                ))}
             </ul>
+            <button className={styles.addtask_btn} onClick={toggleTaskModal}>+ new task</button>
             <div className={styles.modalBkgd} style={{display: isTaskModalOpen? "flex":"none"}}>
                 <div className={styles.modalFrame}>
                     <button className={styles.modalbtn_x} onClick={toggleTaskModal}>X</button>
@@ -105,7 +107,6 @@ function ParseGroups(data){
         e.stopPropagation();
 
         localStorage.setItem("groups", userGroups);
-        console.log("group saved")
     }
 
     return(
@@ -117,9 +118,14 @@ function ParseGroups(data){
 
             </div>
             <ul className={styles.todolist_ul}>
-                {Object.values(groupData.listOBJS).map(ListTask)}
-                <button className={styles.addtask_btn} onClick={toggleTaskModal}>+ new task</button>
+                {/* {Object.values(groupData.listOBJS).map(ListTask)} */}
+                {Object.entries(groupData.listOBJS).map(([key, value]) => (
+                    <li key={key} className={styles.todolist_item}>
+                        {ListTask(value)}
+                    </li>
+                ))}
             </ul>
+            <button className={styles.addtask_btn} onClick={toggleTaskModal}>+ new task</button>
             <div className={styles.modalBkgd} style={{display: isTaskModalOpen? "flex":"none"}}>
                 <div className={styles.modalFrame}>
                     <button className={styles.modalbtn_x} onClick={toggleTaskModal}>X</button>

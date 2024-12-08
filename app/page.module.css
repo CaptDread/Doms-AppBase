@@ -15,7 +15,7 @@
   flex-direction: column;
   gap: 32px;
   grid-row-start: 2;
-  height: 100%;
+  height: 85%;
 }
 
 /* Utility */
@@ -25,6 +25,14 @@
   border-bottom: solid .13em darkslategrey;
   border-left: solid .13em darkslategrey;
   padding: .13em;
+}
+
+.ad_container{
+  height: 7%;
+  background: #000;
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
 }
 
 
@@ -85,9 +93,11 @@
   display: flex;
   padding: 0 1em;
   flex-direction: column;
-  height: fit-content;
+  height: 100%;
   text-transform: capitalize;
   align-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .addtask_btn{
@@ -99,6 +109,7 @@
   font-size: 2.5em;
   font-weight: 600;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  margin-top: auto;
 }
 
 /* ListCards */
@@ -110,6 +121,7 @@
   font-size: 1.2em;
   display: flex;
   gap: .69em;
+  border-bottom: solid .13em slategray;
 }
 .item_info{
   display: flex;
@@ -123,6 +135,7 @@
 }
 .item_extras{
   font-size: 1em;
+  flex-direction: column;
 }
 .item_btns{
   display: flex;
@@ -138,6 +151,16 @@
   font-weight: 500;
 }
 
+/* Item Card SubTask */
+.item_subtasks{
+  flex-direction: column;
+  padding: 6% 10% 0% 10%;
+}
+.item_subtasks li{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
 
 /* Modals */
