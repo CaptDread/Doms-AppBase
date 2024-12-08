@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import DatsMyLogo from "./components/boot/brand";
-import DisplayList from "./components/base/TaskList";
 import GetLists from "./components/base/GroupList";
+import AdStuff from "./components/base/AdContainer";
 
 
 export default function Home() {
@@ -11,9 +11,9 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         {/* <DatsMyLogo/> */}
-        {/* <DisplayList/> */}
         <GetLists/>
       </main>
+      <AdStuff/>
     </div>
   );
 }
