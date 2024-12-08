@@ -109,19 +109,22 @@
 }
 
 
+
 /* Modals */
 .modalBkgd{
   width: 100vw;
   height: 100vh;
   position: absolute;
-  display: flex;
   justify-content: center;
   align-items: center;
   background: #000000af;
+  z-index: 10;
 }
 
 .modalFrame{
   background-color: #fff;
+  position: relative;
+  z-index: 20;
   width: fit-content;
   height: fit-content;
   padding: 1em;
@@ -150,9 +153,29 @@
   gap: 1.3em;
   justify-content: center;
 }
-.modalForm_add .extras .addtask_btn{
+.modalForm_add .extras .addsubtask_btn{
   width: fit-content;
   font-size: 1em;
+  padding: .42em;
+  color: white;
+  border-radius: 5px;
+  background-color: lime;
+  text-transform: capitalize;
+  font-weight: 600;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.subtask_ul{
+  flex-direction: column;
+  height: 2em;
+  overflow-y: scroll;
+}
+.subtask_ul li{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: .069em;
+  border-bottom: solid .13em black;
 }
 
 

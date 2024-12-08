@@ -1,12 +1,22 @@
-// This component handles listing Todo Lists, yeah plural, as in users can use have more than one todo list.  
+// This component handles listing Todo Lists, yeah plural, as in users can use have more than one todo list. 
+"use client"
 import styles from "../../page.module.css"
 import ListTask from "@/app/api/Tasks/List";
 import AddTaskModal from "../modals/AddTaskModal";
+import { React, useState } from "react";
 
 const groups = () => localStorage.getItem('groups');
 
 
-function tutorialList() {
+function TutorialList() {
+    const [isTaskModalOpen, setIsTaskModalOpen] = useState(false)
+
+    const toggleTaskModal = (e) => {
+        e.preventDefault();
+        setIsTaskModalOpen(!isTaskModalOpen);
+        console.log("toggle modal")
+    }
+
     const tutTask1 = {
         task_id:"tuttask",
         task_name:"tutorial task 1",
@@ -54,11 +64,11 @@ function tutorialList() {
             </div>
             <ul className={styles.todolist_ul}>
                 {Object.values(listOBJS).map(ListTask)}
-                <button className={styles.addtask_btn}>+ new task</button>
+                <button className={styles.addtask_btn} onClick={toggleTaskModal}>+ new task</button>
             </ul>
-            <div className={styles.modalBkgd}>
+            <div className={styles.modalBkgd} style={{display: isTaskModalOpen? "flex":"none"}}>
                 <div className={styles.modalFrame}>
-                    <button className={styles.modalbtn_x}>X</button>
+                    <button className={styles.modalbtn_x} onClick={toggleTaskModal}>X</button>
                     <AddTaskModal/>
                 </div>
             </div>
@@ -76,7 +86,7 @@ export default function GetLists(){
 
         return(
             <>
-                {tutorialList()}
+                {TutorialList()}
             </>
         )
     } else {
