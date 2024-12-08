@@ -1,11 +1,12 @@
 import styles from "../../page.module.css";
+import Image from "next/image";
 
 export default function DatsMyLogo(){
     return(
         <>
             <section className={styles.brandShow}>
                 <figure>
-                    <img src={"./../../captainsLogo.png"}/>
+                    <Image src={"./../../captainsLogo.png"} alt={"Logo Designed by the Captain Himself!"}/>
                 </figure>
             </section >
         </>
