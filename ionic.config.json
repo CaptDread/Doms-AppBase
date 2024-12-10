@@ -1,0 +1,7 @@
+{
+  "name": "domsapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
