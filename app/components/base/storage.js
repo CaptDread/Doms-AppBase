@@ -6,8 +6,6 @@ import CordovaSQLiteDriver from "localforage-cordovasqlitedriver";
 import localForage from "localforage";
 
 
-
-
 const useStorage = (key, initialValue) => {
     const [value, setValue] = useState(initialValue);
     const [storage] = useState(new Storage());
@@ -26,6 +24,8 @@ const useStorage = (key, initialValue) => {
     const setStoredValue = async (newValue) => {
         await storage.set(key, newValue);
         setValue(newValue);
+        console.log("save test")
+        console.log(newValue)
     };
 
     // const SaveData = async (key, value) => {

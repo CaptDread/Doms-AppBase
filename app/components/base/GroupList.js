@@ -4,11 +4,7 @@ import styles from "../../page.module.css"
 import ListTask from "@/app/api/Tasks/List";
 import AddTaskModal from "../modals/AddTaskModal";
 import React, { useState, useEffect } from "react";
-import useStorage from "./storage";
-import { Storage } from "@ionic/storage";
-
-
-const storage = new Storage();
+import {useStorage, setStoredValue} from "./storage";
 
 
 
@@ -60,32 +56,33 @@ function TutorialList() {
     const groupString = JSON.stringify(newListGroup)
     const userGroups = [groupString]
 
-    const saveTut = (event) => {
-        event.preventDefault();
-        event.stopPropagation();
+    const saveTut = () => {
 
-        storage.set('Groups', groupString)
+        const saveData = async () => {
+            try{
+                const response = await setStoredValue(groupString);
 
-        // useEffect(() => {
-        //     console.log("Saving Data")
-    
-        //     const fetchDataAndSave = async () => {
-        //         try {
-        //             const response = await fetch('./storage');
-        //             const data = await response.json();
-                
-        //             await SVGAnimateMotionElementaveData('Groups', groupString);
-        //         } catch (error) {
-        //             console.error('Error fetching or saving data:', error);
-        //         }
-        //     };
-        // }, [])
+
+                const responseData = await response.json();
+                console.log('Data sent Successfully:', responseData);
+            } catch (error){
+                console.log('Error sending data', error)
+            }
+            
+            
+        };
+
+        useEffect(() => {
+            saveData();
+        }, [])
+        console.log("hi")
         // localStorage.setItem("groups", userGroups);
     }
+    saveTut();
 
     return(
         <section className={styles.listGroup_section}>
-            <div className={styles.listHeader} onLoad={saveTut(event)}>
+            <div className={styles.listHeader}>
                 <h3>
                     {newListGroup.list_name}
                 </h3>
@@ -155,16 +152,19 @@ function ParseGroups(data){
 
 
 export default function GetLists(){
-    const [data, setData] = useState(null)
+    const [data, setData] = useState([])
+    console.log("Group List.js test")
       
-    // const fetchData = async () => {
-    //     const response = await fetch("./storage");
-    //     const json = await response.json();
-    //     setData(json);
-    // };
-    // useEffect(() => {
-    //     fetchData();
-    // }, [])
+    const fetchData = async () => {
+        const response = await fetch("./storage");
+        const json = await response.json();
+        setData(json);
+    };
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    
 
 
     if (data.length < 1){

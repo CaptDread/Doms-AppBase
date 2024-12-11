@@ -2,13 +2,12 @@ import styles from "./page.module.css";
 import DatsMyLogo from "./components/boot/brand";
 import GetLists from "./components/base/GroupList";
 import AdStuff from "./components/base/AdContainer";
-import HandleStorage from "./components/base/storage";
+import UseStorage from "./components/base/storage";
 
 
 
 
 export default function Home() {
-  
 
 
 
@@ -16,7 +15,7 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         {/* <DatsMyLogo/> */}
-        {/* <GetLists/> */}
+        <GetLists/>
       </main>
       <AdStuff/>
     </div>
